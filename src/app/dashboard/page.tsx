@@ -76,7 +76,7 @@ export default function DashboardPage() {
 
   const fetchCoupons = async () => {
     try {
-      const res = await fetch("/api/coupons");
+      const res = await fetch(`${window.location.origin}/api/coupons`);
       const data = await res.json();
       setCoupons(data.coupons || []);
     } catch (err) {
@@ -131,7 +131,7 @@ export default function DashboardPage() {
     };
 
     try {
-      const res = await fetch("/api/coupons", {
+      const res = await fetch(`${window.location.origin}/api/coupons`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -154,7 +154,7 @@ export default function DashboardPage() {
     if (!confirm(`Delete coupon "${code}"?`)) return;
 
     try {
-      const res = await fetch(`/api/coupons?code=${code}`, { method: "DELETE" });
+      const res = await fetch(`${window.location.origin}/api/coupons?code=${code}`, { method: "DELETE" });
       if (res.ok) {
         fetchCoupons();
       }
