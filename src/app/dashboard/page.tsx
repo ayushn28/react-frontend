@@ -487,22 +487,17 @@ export default function DashboardPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    {coupon.discountType === "PERCENT" ? (
-                      <Badge variant="secondary" className="gap-1">
-                        <Percent className="w-3 h-3" />
-                        {coupon.discountValue}% off
-                      </Badge>
-                    ) : (
-                      <Badge variant="secondary" className="gap-1">
-                        <DollarSign className="w-3 h-3" />
-                        ₹{coupon.discountValue} off
-                      </Badge>
-                    )}
-                    {coupon.maxDiscountAmount && (
-                      <Badge variant="outline">Max ₹{coupon.maxDiscountAmount}</Badge>
-                    )}
-                  </div>
+<div className="flex items-center gap-2">
+  <Badge variant="secondary">
+    {coupon.discountType === "PERCENT"
+      ? `${coupon.discountValue}% off`
+      : `₹${coupon.discountValue} off`}
+  </Badge>
+
+  {coupon.maxDiscountAmount && (
+    <Badge variant="outline">Max ₹{coupon.maxDiscountAmount}</Badge>
+  )}
+</div>
 
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
